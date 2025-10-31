@@ -1,0 +1,51 @@
+Git is a distributed version control system (VCS) used to track changes in source code and collaborate with others.
+✅ What Git Does
+    Git helps you:
+    1. Track changes
+        Every time you edit files, you can save a “snapshot” (called a commit).
+        You can go back to older versions anytime.
+    2. Work in parallel
+        Multiple developers can work on the same project using branches without affecting each other.
+    3. Collaborate easily
+        Using platforms like GitHub, GitLab, Bitbucket, you can push/pull code and manage teamwork.
+
+💡 Why Do We Use Git? (Real-world benefits)
+“Git is used by every IT company because…”
+
+    ✅ You can track all changes
+    ✅ You can work in teams without overwriting each other
+    ✅ You can create branches for new features
+    ✅ You can roll back if something breaks
+    ✅ You can deploy code directly from Git
+    ✅ It integrates with CI/CD tools like Jenkins, GitHub Actions, GitLab CI, ArgoCD etc.
+
+🛠️ How Git Works (High-level Understanding)
+    “Git works in three main areas:”
+    - Working Directory – your actual files
+    - Staging Area – files you are preparing to commit
+    - Repository – where Git stores your permanent changes
+    
+    ** “When you modify a file → add it to staging → commit it → the commit is permanently stored in the repo.”
+    - Basic Git Flow
+        git init            # Create git repository
+        git status          # Check status
+        git add .           # Stage changes
+        git commit -m "msg" # Save snapshot
+        git push            # Upload to remote repo
+        git pull            # Get latest changes
+        git branch          # Manage branches
+        git merge           # Merge branches
+
+✅ Real-world Example
+    Imagine you’re working on a project:
+    You create a feature branch
+    Make changes
+    Commit the changes
+    Push to GitHub
+    Create a Pull Request
+    Team reviews → approves → merges to main
+
+✅ Repository Types:
+    Local
+    Remote
+

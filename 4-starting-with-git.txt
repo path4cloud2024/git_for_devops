@@ -1,0 +1,101 @@
+Initialize Git Local Repo
+
+- create a project folder and add your code
+- to initialize the git run:
+    # git init
+    Initialized empty Git repository in <project_folder>
+    (it will add .git directory where git keeps the track of all config, hooks, branches information and many more)
+- once initialized then add one sample file:
+    # echo "Welcome to Path4Cloud" > first_file.txt
+
+Now, the real magic begin:
+
+- to check the track status, run
+    # git status
+
+    On branch master   ---> shows on which branch you are now
+    No commits yet     ---> if any commit made 
+    Untracked files:   ---> list of untracked files
+    (use "git add <file>..." to include in what will be committed)
+            first_file.txt
+    nothing added to commit but untracked files present (use "git add" to track)
+
+- Lets push this now to git where it can be tracked, but we have few steps to keep it tracked:
+    - When we add the file very first time, that is in stage called, WORKING AREA
+        # git add first_file.txt
+
+    - Next will be STAGING AREA, where we need to commit the file so that it can be tracked
+    - COMMIT just records the change of a repository compared to its previous state
+        # git commit -m <usefull and descriptive message to track it later>
+
+    - Committed files AREA, which are ready to PUSH to git server
+        # git push
+
+###################################################################################################################
+
+- Additonal commands to understand git more
+    # git add . (to add all files in current directory)
+    # git status
+        Untracked files:
+        (use "git add <file>..." to include in what will be committed)
+
+    # git add <file_name> (to add only a particular file)
+    # git status
+        Changes to be committed:
+        (use "git rm --cached <file>..." to unstage)
+
+    ** Before we commit, we need to set our identity because commit keeps a track with author name.
+    
+        Author identity unknown
+        *** Please tell me who you are.
+        Run
+            git config --global user.email "you@example.com"
+            git config --global user.name "Your Name"
+        to set your account's default identity.
+        Omit --global to set the identity only in this repository.
+
+    # git commit -m <message>
+    # git status
+        On branch master
+        nothing to commit, working tree clean
+
+
+    ** when we commit any file, git saves the exact copy of that file in .git folder
+
+- Modifying the already tracked file:
+    # echo "It's modification" >> first_file.txt
+        (it will move the file from commited stage to modifed stage which is the current file, previous version of file is still there under commited history or ID, that's the benifit of using git, we can go download or recover the original file anytime)
+
+    # git status
+        On branch master
+        Changes not staged for commit:
+        (use "git add <file>..." to update what will be committed)
+        (use "git restore <file>..." to discard changes in working directory)
+                modified:   first_file.txt
+
+        So, here we have two options either, we can add the file again to staging area or if it was by mistake or not required then we can restore the previous version of file:
+        # git restore first_file.txt
+        (it will replace the modified file with original file and not working area is clean again since no different between current file and committed file)
+
+        ** git restore helps us to recover the files in such case as well where if you have modifed the file whcih is staged already and you don't want to keep the current modification then we can recover the file from git where git cached the file as soon as we add it to git.
+
+        ** If we want to restore the staged file to working area then we can run:
+            # git restore --staged <file_name>
+
+    # git Ignore file:
+        Let say, some files which we dont want to keep tracked by git and don't want to staged or pushed to central repo then we can put those file in .gitignore file and git will not track those files.
+    
+    # git rm <file_name> --cached OR -f
+        -- cached (only to remove from staged area and but still want to be tracked later)
+        -f is force which will remove the files completely from project folder.
+    
+    # git log
+        (will show the commit has, auther and timeline for all commits)
+    
+    # git log --oneline (will show only commit IDs)
+
+    
+
+
+
+    
