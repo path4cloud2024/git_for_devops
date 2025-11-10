@@ -9,7 +9,7 @@ Welcome to the **Git for DevOps Course** repository! This guide covers everythin
 Explore the full video series on my YouTube channel:
 
 👉 **Git for DevOps: Crash Course (Basics to Advanced)**
-https://www.youtube.com/playlist?list=PL4AfI7BPFsduFTARD9kl0o4BDD_6jOx1m
+[![Watch the video](https://img.youtube.com/vi/p1BhSGInkQk/maxresdefault.jpg)](https://www.youtube.com/playlist?list=PL4AfI7BPFsduFTARD9kl0o4BDD_6jOx1m)
 
 ---
 
