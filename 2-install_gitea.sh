@@ -48,6 +48,8 @@ systemctl daemon-reload
 systemctl enable gitea
 systemctl start gitea
 
+systemctl status gitea
+
 
 # access the server : <server_ip>:3000
 # follow the setup, choose sqlite as DB for gitea to keep it lightweight and fast/simple
