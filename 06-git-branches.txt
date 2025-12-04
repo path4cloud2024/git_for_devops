@@ -1,0 +1,117 @@
+Branch:
+    >>>> It's just a pointer to a specific commit.
+
+    - Its certainly a duplicate version of your current versions of file but as a new branch under same directory.
+    - Where we can safely play with files modification and will not impact a files under main/master branch.
+    - Once we fully satisfied then we can merge these changed to parent branch whcih is main/master, so master is a default branch.
+    - A repo can have a mulitple branches.
+    - Pointers for all branches are located under .git/refs/heads, it auto moves to new pointer/commit after new commit.
+    - your current branch tracks new commits.
+
+    ** Few commands to play with branch:
+        # git branch <new_branch> (create a new branch)
+        # git switch <existing_branch> (change the branch)
+            or
+        # git checkout <existing_branch> (change the branch)
+
+        # git checkout -b <new_branch> (do both above operation at a time)
+
+        # git branch -d <branch_name> (delete merged branch)
+        # git branch -D <branch_name> (delete unmerged branch, forcefully)
+
+        # git branch -m <old_name> <new_name> (rename the existing branch)
+        
+HEAD:
+    >>>> Pointer to a current snapshot in repository, It is unique and always only one HEAD. It will reference to the currently checked-out branch or commit.
+    
+    - Pointer is located in the .git/HEAD file
+    - Default is "ref: refs/heads/master"
+    - Which again refer to last commit.
+
+
+    If we have created a new branch and add or modify something in files and without merging that to main branch if i try to delete, git won't allow to delete it until it merged. You can delete with git branch -D <branch_name> but in that way commit becomes the orphaned commit and overtime, git runs garbage collector, eventually it delete that commit.
+
+    HEAD --> usually points to last commit becuase now Git knows the parent of next commit 
+
+    git checkout <commit_id> will lead you to the Detached HEAD state , we have to create a new branch on it to keep the changes alive and tracked by git.
+
+MERGING THE BRACNHES:
+    There are two types of merge:
+    1) Fast forward merge:
+        It is possible when there are not further commits in the receiving or main/master branch after the commit where feature or new branch was created.
+        Basically no merge rather just rewrite the tree or refer to a new commit, zero chance for conflict.
+        It just simply moves the pointer (HEAD) to last commit in new branch as (master and new_branch)
+        Posst merger, we can delete the new_branch (git branch -d <branch_name> (delete merged branch))
+
+        Merging Process:
+            a. Create a new feature branch from the main/master branch
+            b. Make changes in new feature branch and commit
+            c. checkout back to main/master branch
+            d. merge feature branch to main/master branch (git merge <new_branch>)
+
+        ** It will automatically decide the merge strategy based on commit history, if its fast forward then you can see something like this:
+
+        Updating bd0abbf..14b7a30
+        Fast-forward     <------------- merge strategy type.
+
+    2) 3 way merge:
+        It is to be choosen by git when a receiving branch has more commit than the new_branch was created.
+        This merge will have all commit history from main/master and new branch as well hence, final commit where HEAD point, would have 2 parents.
+        It creates a new merge commit based on both branches and their common parent, whereas Fast Forward does not create a new commit.
+
+        Merge >>> Diversion --> Conversion 
+
+        Merging Process:
+            a. Create a new feature branch from the main/master branch
+            b. Make changes in new feature branch and commit
+            c. checkout to main/master branch and commit new file message
+            d. now main/master branch have more commit from the point where new feature branch was created
+            e. merge feature branch to main/master (git merge <new_branch>)
+
+        ** It will automatically decide the merge strategy based on commit history, if its more commit from the pointer where new feature branch was created then you can see something like this:
+
+        Merge made by the 'ort' strategy.
+        (here ORT = Optimized Recursive Tree)
+
+
+    ---> Merge conflict:
+            When same files were edited in both branches.
+            Plan:
+                a. Create a new feature branch from the main/master branch
+                b. Make changes in one file and commit
+                c. checkout to main/master branch
+                d. Make changes in same file and commit
+                e. Now, try to merge, it will land to conflict now.
+
+            Auto-merging a.txt
+            CONFLICT (content): Merge conflict in a.txt
+            Automatic merge failed; fix conflicts and then commit the result.
+
+            If you check the status:
+
+            git status
+            On branch master
+            You have unmerged paths.
+            (fix conflicts and run "git commit")
+            (use "git merge --abort" to abort the merge)
+
+            Unmerged paths:
+            (use "git add <file>..." to mark resolution)
+                    both modified:   a.txt
+
+            no changes added to commit (use "git add" and/or "git commit -a")
+
+        ** Solving merge conflict:
+            If VS Code then, in a conflict file, it shows the difference and give an option as:
+            - Accept Current change (from master branch)
+            - Accept Incoming change (from feature branch)
+            - Accept Both change
+
+
+
+
+    
+    Rebase ---> Relocates a branch to a new parent
+        new_feture # git rebase master
+
+    

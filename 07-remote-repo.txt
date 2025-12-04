@@ -1,0 +1,19 @@
+- Remote repository hosted mostly on cloud or we can host those on our onprem server as well.
+- One of mostly used is github.com
+
+We can clone or download the repe from remote hosted to our local system:
+- we can download as ZIP folder but it will download only content not with .git folder.
+- we can clone the repo with git binary whcih will download the content of working directory and .git folder as well.
+
+** when we clone any remote repo, it will come as archive for all object and index structure under .git/objects/pack folder.
+
+We can unpack this file using "git unpack-objects" but make sure, you will move this file from objects folder.
+
+demo:
+    # cd <repo_dir>/.git/objects/pack
+    # mv pack-*****.pack <repo_dir>/.git/ (move the pack file to .git folder)
+    # cat pack-*****.pack | git unpack-objects (unpack the .pack file)
+    # you can verify now, we have hash files under .git/objects directory
+
+
+    
