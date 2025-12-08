@@ -73,6 +73,69 @@ MERGING THE BRACNHES:
         Merge made by the 'ort' strategy.
         (here ORT = Optimized Recursive Tree)
 
+*******
+    🎯 Git Branch Naming Convention Explained
+        Branch naming conventions help teams stay organized, communicate purpose, and maintain clean workflows in Git.
+        A proper naming pattern makes it easy to understand why a branch exists and what type of change it contains.
+
+        The common format is:
+        a. feat/ → Feature development: Used when adding new functionality.
+            Examples:
+                feat/user-authentication
+            Use case:
+                Implementing a new user story, enhancement, or module.
+
+        b. fix/ or bugfix/ → Fixing bugs: Used for normal bug fixes that are not urgent.
+            Examples:
+                fix/login-button
+            Use case:
+                Resolving issues reported by QA or production bugs that are not critical.
+            
+        c. hotfix/ → Critical production fixes: Used for immediate, urgent fixes to production.
+            Examples:
+                hotfix/payment-failure
+            Use case:
+                Something is broken in production and must be fixed ASAP.
+
+        d. docs/ → Documentation changes: Used when updating readme files, wiki pages, comments, diagrams.
+            Examples:
+                docs/update-installation-guide
+
+        e. style/ → Non-functional formatting changes: Used for visual / formatting fixes, without changing logic.
+            Examples:
+                style/remove-extra-spaces
+            Use case:
+                Whitespace fixes, code linting, indentation cleanup.
+            
+        f. refactor/ → Code restructuring without changing behavior: Used when improving code structure or quality.
+            Examples:
+                refactor/auth-service
+            Use case:
+                Improving readability, performance, or maintainability.
+
+        g. test/ → Adding or updating tests
+            Examples:
+                test/add-unit-tests-for-auth
+
+        h. chore/ → Maintenance tasks: Used for tasks that don’t change application behavior.
+            Examples:
+                chore/update-dependencies
+            Use case:
+                CI configuration updates, build script changes, dependency upgrades.
+
+    🧩 Why do we need naming conventions?
+        ✔ Improve clarity
+            You instantly know what the branch is for.
+        ✔ Faster reviews
+            Reviewers understand the purpose without opening the code first.
+        ✔ Better automation
+            CI/CD systems can trigger different workflows based on branch type.
+        Example:
+            Deploy feature branches to a dev environment
+            Deploy hotfix branches to production immediately
+        ✔ Reduce confusion in teams
+            Everyone uses the same style.
+
 
     ---> Merge conflict:
             When same files were edited in both branches.
