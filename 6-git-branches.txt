@@ -35,7 +35,7 @@ HEAD:
 
     git checkout <commit_id> will lead you to the Detached HEAD state , we have to create a new branch on it to keep the changes alive and tracked by git.
 
-MERGING THE BRACNHES:
+MERGING THE BRANCHES:
     There are two types of merge:
     1) Fast forward merge:
         It is possible when there are not further commits in the receiving or main/master branch after the commit where feature or new branch was created.
