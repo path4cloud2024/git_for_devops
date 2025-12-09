@@ -41,7 +41,7 @@ MERGING THE BRANCHES:
         It is possible when there are not further commits in the receiving or main/master branch after the commit where feature or new branch was created.
         Basically no merge rather just rewrite the tree or refer to a new commit, zero chance for conflict.
         It just simply moves the pointer (HEAD) to last commit in new branch as (master and new_branch)
-        Posst merger, we can delete the new_branch (git branch -d <branch_name> (delete merged branch))
+        Post merger, we can delete the new_branch (git branch -d <branch_name> (delete merged branch))
 
         Merging Process:
             a. Create a new feature branch from the main/master branch
@@ -137,39 +137,7 @@ MERGING THE BRANCHES:
             Everyone uses the same style.
 
 
-    ---> Merge conflict:
-            When same files were edited in both branches.
-            Plan:
-                a. Create a new feature branch from the main/master branch
-                b. Make changes in one file and commit
-                c. checkout to main/master branch
-                d. Make changes in same file and commit
-                e. Now, try to merge, it will land to conflict now.
-
-            Auto-merging a.txt
-            CONFLICT (content): Merge conflict in a.txt
-            Automatic merge failed; fix conflicts and then commit the result.
-
-            If you check the status:
-
-            git status
-            On branch master
-            You have unmerged paths.
-            (fix conflicts and run "git commit")
-            (use "git merge --abort" to abort the merge)
-
-            Unmerged paths:
-            (use "git add <file>..." to mark resolution)
-                    both modified:   a.txt
-
-            no changes added to commit (use "git add" and/or "git commit -a")
-
-        ** Solving merge conflict:
-            If VS Code then, in a conflict file, it shows the difference and give an option as:
-            - Accept Current change (from master branch)
-            - Accept Incoming change (from feature branch)
-            - Accept Both change
-
+    
 
 
 
