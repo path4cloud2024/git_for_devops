@@ -31,7 +31,7 @@
             - Accept Incoming change (from feature branch)
             - Accept Both change
 
-        ** Solving merger in terminal:
+        ** Solving merge in terminal:
             user vim or another editor and get inside the file:
             - check the changes coming from HEAD (from main branch)
             - check the changes coming from <new_branch>
