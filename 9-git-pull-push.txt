@@ -1,0 +1,96 @@
+---> To interact with remote repository, we use following commands:
+    # git push (pushing code from local repo to remote repo)
+    # git fetch (fetch the updates from remote repo to local repo)
+    # git pull (fetch and merge the updates from remote repo to local repo)
+
+
+Working directory           Staged area                 Local Git repo              Remote repo
+
+(file/codes) -- git add --->
+                                        -- git commit--->
+                                                                      -- git push ---->
+                                                                      <--- git fetch --
+             <------------ git checkout ----------------------------
+             <------------ git pull     ---------------------------------------------
+
+
+---> ORIGIN:
+        When we pull the remote repository, git will automatically create a remote repo url and name it as ORIGIN as default.
+
+        We can check like:
+        $ git remote -v
+        origin  https://github.com/path4cloud2024/git_for_devops.git (fetch)
+        origin  https://github.com/path4cloud2024/git_for_devops.git (push)
+
+        It is required for push and fetch operation so GIT knows to which remote repo you are interacting with.
+
+---> Listing remote branch:
+        # git branch (will list local branch only)
+        # git branch -r (will list remote branch)
+        # git branch -a (will list both local and remote branch)
+
+
+---> Tracking branch:
+    It is a branch available locally which points to same remote branch and tracks it. By default, only default branch has its Tracking Branch, doesn't matter how many another branches are there in remote repository. If you want to create a another tracking branch to any branch then simply switch to that branch and it will create a tracking branch locally.  
+
+        # git branch -vv (will list local branch with it tracking branch)
+    
+        # git remote show origin (will list more information about remote and track branch)
+
+---> git fetch command will fetch all the updates from remote branch to local branch.
+    DEMO:
+        a. create a new branch in remote repo
+        b. run # git branch -r to list all the remote branches, you will not see the newly created branch
+        c. now run, # git fetch command to get the updates
+        d. now, if we run # git branch -r, it will list all the remote branches
+        e. And if we checkout to remote branch, it will create a tracking branch
+        f. we can confirm with # git remote -vv or # git remote show ogigin
+
+        ** since local branch is just tracking branch so git allow us to delete this without merge as well.
+        ** but if the branch gets deleted from remote repo then it will become state in your local repo
+            (# git remote show origin)
+            -- to remove the stale branch run # git remote prune origin
+            (it will remove the stale branch but still tracking branch exists locally, so we can delete the same with # git branch -d <branch_name>, then we can confirm with # git remote -vv)
+           
+---> Git Pull:
+        - It does two operation Fetch and Merge at same time.
+        - It fetches the update from remote to local branch and then merge it to your branch.
+        - It updates only single local currently checked out branch.
+
+        While performing this operation, git uses the .git/FETCH_HEAD file, and this file contains the last commit ID for the branch (where we run git pull) in remote repo and update the hash in this file.
+        When we switch to another branch and wanted to pull the udpates then git pull checks the same file and merge it to that branch.
+
+---> Git Push:
+        - local changes can be pushed to remote repo.
+        - it required a write access to remote repo and ask for credentials to push those chnages.
+        
+    ** Pushing newly created local branch to remote repo:
+        - If a branch has been created locally and its not available in remote repo then when we try to push the changes made to this newly created branch to remote repo, it will give you fatal error as "current branch has no upstream branch"
+        - So we need to set the upstream for the current origin as below:
+            # git push --set-upstream origin <branch_name>
+            OR
+            # git push -u origin <branch_name>
+        - Once the new branch has been set as track then we can simly push the git push.
+
+---> Update Tracking Status:
+        - Let say, any remote branch is deleted from remote repo and if it was already tracked locally then the status won't get updated automatically. We need to prune the status as below:
+        # git remote update origin --prune
+        (it will mark the tracking branch as gone and later we can safely remove that branch if not required, but if we push it again then it wil create the same branch in remote repo)
+
+---> Delete remote repo branch from local terminal:
+        - Let say, we have created a new local branch and pushed to remote repo with # git push -u origin <branch_name>
+        - and if we want to delete the same from local to remote then we can run:
+            # git push origin -d <branch_name>
+
+---> # git show-ref (its a quick command to list all the reference between local branch and remote branch)
+     # git show-ref <branch_name> (to list for a particular branch)
+
+     
+
+
+
+
+
+
+
+
