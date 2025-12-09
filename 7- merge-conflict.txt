@@ -1,0 +1,40 @@
+---> Merge conflict:
+            When same files were edited in both branches.
+            Plan:
+                a. Create a new feature branch from the main/master branch
+                b. Make changes in one file and commit
+                c. checkout to main/master branch
+                d. Make changes in same file and commit
+                e. Now, try to merge, it will land to conflict now.
+
+            Auto-merging a.txt
+            CONFLICT (content): Merge conflict in a.txt
+            Automatic merge failed; fix conflicts and then commit the result.
+
+            If you check the status:
+
+            git status
+            On branch master
+            You have unmerged paths.
+            (fix conflicts and run "git commit")
+            (use "git merge --abort" to abort the merge)
+
+            Unmerged paths:
+            (use "git add <file>..." to mark resolution)
+                    both modified:   a.txt
+
+            no changes added to commit (use "git add" and/or "git commit -a")
+
+        ** Solving merge conflict:
+            If VS Code then, in a conflict file, it shows the difference and give an option as:
+            - Accept Current change (from master branch)
+            - Accept Incoming change (from feature branch)
+            - Accept Both change
+
+        ** Solving merger in terminal:
+            user vim or another editor and get inside the file:
+            - check the changes coming from HEAD (from main branch)
+            - check the changes coming from <new_branch>
+            - decide which one you want to keep, original, from new_branch or both
+            - once modified then save the file and add the filr to stage area
+            - conflict will be resolved.
