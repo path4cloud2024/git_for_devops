@@ -1,0 +1,24 @@
+Git Pull Request:
+    It is the feature for github hosted plaform which helps you to sync your code to remote repo.
+
+    Via PR (pull request), all contributors are connected with each other, they can comment to each other modification and recommend for new updates or enhancement.
+
+    It is a simple proposal for any changes.
+
+    With PR, collaborators easily contributes to public repos with Forking. (Forking is a feature with any github user can create a replica of any public repo inside his account and develope a new feature or contribute a new addition then he can raise a PR reqeust to an original repo and ask owner to review those changes and if required, we have one or more approver to review and merge those new changes)
+
+Step-by-Step Procecss:
+    - Lets assume we have lead-developer and developer where developer is working on some feature branch which he created on his local repo.
+    - Developer has done some changes in his local feature branch and committed those to his local repo and then to remote branch.
+    - Now, developer opened a PR as collaborator for review his changes and lead-developer is the reviewer here and he will approve the changes (PR)
+    - Once, PR is approved then developer can merger those changes to main branch and delete the local and remote feature branch.
+
+    ** Here, if as reviewer wants some more modification and then he can comment on those PR and same has been notified via email to developer and once both agree and happy with changes then it will be approved and merged.
+
+
+** If we need to change the author of last commit, then we can amend the same using this command:
+	# git commit --amend --author="username <email_id> 
+	(make sure, you will follow the same format as it mentioned for example: git commit --amend --author="path4cloud <path4cloud_git@outlook.com>)
+	
+	
+    
