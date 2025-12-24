@@ -1,0 +1,57 @@
+👥 CODEOWNERS File – Explained + Sample
+
+The CODEOWNERS file defines who must review changes for specific files or directories.
+
+📍 Location:
+    .github/CODEOWNERS
+    (or root: CODEOWNERS)
+
+✅ Sample CODEOWNERS File (Production-ready)
+
+# Default owner for everything
+* @platform-team
+
+# Backend application code
+/app/ @backend-team
+
+# Frontend code
+/frontend/ @frontend-team
+
+# Infrastructure & DevOps
+/infra/ @devops-team
+/terraform/ @devops-team
+/k8s/ @devops-team
+
+# CI/CD pipelines
+/.github/workflows/ @devops-team
+
+# Security-related files
+/security/ @security-team
+*.pem @security-team
+*.key @security-team
+
+# Documentation
+/docs/ @tech-writers
+README.md @tech-writers
+
+
+##########################################
+🧠 How CODEOWNERS Works
+        Example scenario:
+            PR modifies files in /infra/
+            GitHub automatically:
+            Requests review from @devops-team
+            Blocks merge until at least one DevOps member approves
+            Even if:
+                ✔ CI passed
+                ✔ Other reviewers approved
+
+    👉 Code Owner approval is mandatory
+
+🔐 Why CODEOWNERS is important
+| Benefit    | Why it matters                  |
+| ---------- | ------------------------------- |
+| Ownership  | Clear responsibility            |
+| Security   | Prevents unauthorized changes   |
+| Expertise  | Right people review the code    |
+| Governance | Mandatory for infra & prod code |

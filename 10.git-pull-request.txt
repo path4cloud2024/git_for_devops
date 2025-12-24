@@ -20,5 +20,67 @@ Step-by-Step Procecss:
 	# git commit --amend --author="username <email_id> 
 	(make sure, you will follow the same format as it mentioned for example: git commit --amend --author="path4cloud <path4cloud_git@outlook.com>)
 	
+
+Demo:
+    1) Create a new demo-repo in your github account, with README.MD file
+    2) Clone the same repo on your server or local system
+    3) If cloned on server:
+		* go to project directory
+		* create a new branch # git checkout -b <new_branch>
+		* Create a new file with some content and commit to local branch
+		* now, push to remote all these changes
+		* git push (but it will prompt for upstream URL since it is a new branch) so run:
+		* git push -u origin <branch_name>
+
+    3) If cloned on local-system:
+        * Open the project with VS Code and create a new branch, clicking on left bottom.
+		* You will be automatically switched to new branch
+		* create a new file with some content and commit to local branch
+		* now, push to remote all these changes
+		* git push (but it will prompt for upstream URL since it is a new branch) so run:
+		* git push -u origin <branch_name>
+	
+	4) now, in same output from git push, it will suggest to open a PR and you can see as something like below:
+		 remote:      https://github.com/path4cloud2024/pci-demo/pull/new/feat-1
+		* open this link to the browser where you have logged into github account
+		OR
+		* go to same repo in github, and switch to new branch, it wil give you a link to comapare and pull request
+			(on this page, it will show, against which branch you are comparing your branch, all commits made to this branch, what all modification has been done)
+		* now, add your title as per best practice of naming convention of git branch, here we can give like [branch_name]<some title>, so that later we can identity the PR with branch_name itseld, or we can put the JIRA TASK if JIRA and Github is integrated.
+		And click on Create Pull Request.
+	--> Same Demo(open PR) can be performed from github desktop gui mode.
+		
+	5) We can explore the opened PR, the coversation from other collaborator, commits, checks if any and file changed.
+	6) we can add reviewer and approver to your merger request via pull request but by defulat, GIT allows you to merger your changes into main branch without any review and approver.
+	
+	7) If you want, you can open this PR URL with another browser where you have logged in with another account.
+	8) On conversation section, if you want to commit then do it, or if you want to commit on changed file then go to "Files Changed" section and comment by line-by-line.
+	9) While commenting on line-by-line, we have two options:
+		* Add Single Comment: It will finish your review with this single comment and notify the owner.
+		* Start a Review: If you want to comment on multiple lines, then clic on this and finish your comment on all required lines, then finish review changes. (all commits will be notified via one email only)
+		
+	10) Now, the owner can see all the comment and he can reply and reolsve the conversation.
+	11) Once, reviewer/approver done with his review, he can approve the review.
+	
+	12) Let's add a reviewer/approver so that, additional user will be able to edit or write this repo.
+	13) Go to repo --> settings --> Collaborators and teams and click on "Add People" and seach for account id and choose the Write permission so that he can contribute and push changed from his account.
+	14) A user will get an invitation to contribute to this repo, now he can accept the invitation or deny.
+	15) Now, apart from comment or review, an user has access full rights to that repo and he can see the PR and merge the same.
+	16) Lets try to create a new branch from user account and open a PR from there.
+	17) So far, anyone can review and approve or without review/approver we can merge the branch that is default behaviour.
+	
+	18) Lets set the rule on master/main branch to protect from defualt merge behaviour.
+	19) Go to repo --> Settings --> Branches --> Branch protection rule --> under this we have 2 options:
+		* Classic Branch Protection Rules
+			--> Give the name of branch which you want to protect, in this case main/master
+			--> Select "Require Pull Request before merging" under Protect matching branches which will enable all commits made to feature or non-protected branch must be submitted via pull reqeust with the required number of approver/reviewer before they can be merged into main/master branch.
+			--> Choose, "Dismiss stale pull request approvals when new commits are pushed" if you want your PR approval will be dismissed if a new commit will be made post approval, if a new commit then it must be approved again.
+			--> If you have configured the Code Owner and want approval from them before merger then choose this option "Require review from Code Owners"
+			--> We have other options as well, Please check 11-Protection-Rules–Explained.txt for more and detailed information.
+			
+		* Branch Ruleset
+		
+		--> 
+	
 	
     

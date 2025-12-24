@@ -1,0 +1,228 @@
+🔐 GitHub Branch Protection – Pull Request Rules Explained
+	Branch protection rules are used to protect important branches like main, master, release/*, or production.
+        They enforce quality, security, and process discipline before code can be merged.
+
+        ✅ 1. Protect matching branches
+                🔹 What it means: This rule applies to all branches whose names match a pattern, such as: main,release/*,prod-*
+                Once enabled, GitHub enforces the selected protections on those branches with following additional options:
+                ✅ Require a pull request before merging
+                        🔹 What it does: Prevents direct commits or pushes to the protected branch.
+                        ✔ All changes must:
+                                Be made in a feature branch
+                                Be submitted via a Pull Request
+                                Go through review + checks
+                        🔹 Why it’s important
+                                Prevents accidental pushes to main
+                                Enforces review process
+                                Creates audit trail
+                        🔹 Real-world use: Always enabled for main / production branches
+
+                ✅ Require approvals
+                        🔹 What it does: Requires a specific number of approved reviews before merge.
+                                Example: Require 2 approvals
+                        PR cannot merge until 2 reviewers approve, Any “Changes requested” blocks the merge
+                        🔹 Why it’s important
+                                Enforces peer review
+                                Reduces bugs
+                                Improves code quality
+                        🔹 Real-world use
+                                1 approval → small teams
+                                2–3 approvals → enterprise teams
+
+                ✅ Dismiss stale pull request approvals when new commits are pushed
+                        🔹 What it does: If new commits are added to the PR: Previous approvals are automatically dismissed and 
+                                Reviewers must re-approve
+                        🔹 Why it’s important
+                                Prevents this situation:
+                                “I changed the code after approval without reviewers noticing”
+                        🔹 Real-world use
+                                ✔ Highly recommended
+                                ✔ Standard in secure teams
+
+                ✅ Require review from Code Owners
+                        🔹 What it does: Requires approval from specific owners of files or directories.
+                        Uses the CODEOWNERS file:
+                                /infra/   @devops-team
+                                /app/     @backend-team
+                        If PR changes /infra/, then @devops-team must approve.
+                        🔹 Why it’s important
+                                Ensures domain experts review changes
+                                Prevents unauthorized modifications
+                        🔹 Real-world use: Infrastructure/Security/Platform teams
+
+                ✅ Restrict who can dismiss pull request reviews
+                        🔹 What it does: Controls who can remove an approval or dismiss “changes requested”.
+                                Example:
+                                        Only team leads can dismiss reviews
+                                        Developers cannot dismiss their own rejected reviews
+                        🔹 Why it’s important
+                                Prevents abuse
+                                Protects reviewer authority
+                                Enforces accountability
+
+                ✅ Allow specified actors to bypass required pull requests
+                        🔹 What it does: Allows specific users, teams, or apps to merge without PR.
+                        ⚠️ This bypass applies only to PR requirement, not:
+                                Status checks
+                                Signed commits
+                                Deployment checks
+                        🔹 Why it’s important
+                                Emergency hotfixes
+                                Automation tools
+                                Release managers
+                        🔹 Real-world use: CI/CD bots, Platform admins (very limited)
+
+                ✅ Require approval of the most recent reviewable push
+                        🔹 What it does: Ensures the latest commit is approved by someone else.
+                        Prevents:
+                                Author pushes new commit
+                                Immediately merges without review
+                        🔹 Why it’s important
+                                Guarantees the final code was reviewed
+                                Prevents last-minute unreviewed changes
+                        🔹 Real-world use
+                                ✔ Strong governance
+                                ✔ Recommended for production branches
+
+        ✅ 2. Require status checks to pass before merging
+                🔹 What it does: Prevents merging unless all selected CI checks pass.
+                        Examples of checks: Build/Unit tests/Security scans/Code coverage
+                🔹 How it works: 
+                        - Developer pushes code to a feature branch
+                        - Opens a Pull Request
+                        - GitHub waits for CI checks (GitHub Actions, Jenkins, etc.)
+                        - Merge button stays disabled until checks pass
+                🔹 Why it’s important
+                        ✔ Prevents broken code from reaching main
+                        ✔ Enforces automated testing
+                        ✔ Foundation of CI/CD pipelines
+                🔹 Use case: Always enable for production branches
+
+        ✅ 3. Require conversation resolution before merging
+                🔹 What it does: Requires all PR review comments and discussions to be resolved before merging.
+                        Example: If a reviewer comments, The PR cannot be merged until, the author fixes it and marks the conversation as Resolved
+                🔹 Why it’s important
+                        ✔ Ensures feedback is addressed
+                        ✔ Prevents ignoring reviewer concerns
+                        ✔ Improves code quality
+                🔹 Use case: Teams with mandatory code reviews
+
+        ✅ 4. Require signed commits
+                🔹 What it does: Allows only cryptographically signed commits (GPG / SSH).
+                        GitHub shows:
+                                ✅ Verified
+                                ❌ Unverified
+                🔹 Why it’s important
+                        ✔ Prevents commit spoofing
+                        ✔ Ensures commits are from trusted developers
+                        ✔ Critical for compliance & security
+                🔹 Use case: Enterprise environments, Open-source projects, Regulated industries (finance, healthcare)
+
+        ✅ 5. Require linear history
+                🔹 What it does: Disallows merge commits. Only allows: Rebase/Squash merge
+                🔹 Result: Clean, straight commit history:
+                        A → B → C → D
+                        Instead of:
+                        A → B → ┐
+                                ├→ M
+                        C → D → ┘
+                🔹 Why it’s important
+                        ✔ Cleaner history
+                        ✔ Easier debugging
+                        ✔ Better git bisect
+                🔹 Use case: Teams that prefer clean Git history
+
+        ✅ 6. Require merge queue
+                🔹 What it does: Forces PRs to be merged one at a time via a queue.
+                        GitHub: Queues PRs, Re-runs checks with latest main, Merges only if everything passes
+                🔹 Why it’s important
+                        ✔ Prevents “works alone but breaks together” issues
+                        ✔ Solves race conditions in CI
+                        ✔ Ensures every merge is validated against latest code
+                🔹 Use case: High-traffic repositories with many parallel PRs
+
+        ✅ 7. Require deployments to succeed before merging
+                🔹 What it does: Requires a successful deployment to selected environments (e.g. staging) before merge.
+                🔹 Example: PR must deploy successfully to staging, Only then can it be merged into main
+                🔹 Why it’s important
+                        ✔ Verifies real environment behavior
+                        ✔ Reduces production failures
+                        ✔ Adds release confidence
+                🔹 Use case: Advanced CI/CD pipelines with environments
+
+        🔒 8. Lock branch
+                🔹 What it does: Makes the branch read-only, No pushes, No merges. No PRs
+                🔹 Why it’s important:
+                        ✔ Freeze releases
+                        ✔ Emergency lockdown
+                        ✔ Archive old branches
+                🔹 Use case: Release freeze, Incident response, Deprecated branches
+
+        🚫 9. Do not allow bypassing the above settings
+                🔹 What it does: Applies rules to everyone, including: Admins and Users with “bypass” permission
+                🔹 Why it’s important:
+                        ✔ No special privileges
+                        ✔ Prevents “admin override” mistakes
+                        ✔ Strong governance
+                🔹 Use case: Strict compliance environments
+
+        👥 10. Restrict who can push to matching branches
+                🔹 What it does: Only allows specific users, teams, or apps to push. Even they: Must pass status checks, Cannot bypass protections
+                🔹 Why it’s important
+                        ✔ Prevents accidental pushes
+                        ✔ Controls production access
+                        ✔ Improves security
+                🔹 Use case: Only release managers can push to main, CI bots can push version tags
+
+🔁 GitHub Protected Branch Workflow (Diagram)
+🧭 High-level flow
+
+Developer
+   |
+   | 1. Create feature branch
+   |    (feat/login-auth)
+   v
+Feature Branch
+   |
+   | 2. Push commits
+   v
+Pull Request (PR)
+   |
+   |-- CI Checks (build, test, lint)
+   |        |
+   |        └─ Must PASS ✅
+   |
+   |-- Code Review
+   |        |
+   |        ├─ Required Approvals (e.g., 2)
+   |        ├─ Code Owners Approval (if files match)
+   |        └─ All comments resolved
+   |
+   |-- New commit pushed?
+   |        |
+   |        └─ Old approvals dismissed 🔄
+   |
+   v
+Merge Queue (optional)
+   |
+   |-- Rebase / squash
+   |-- Re-run checks on latest main
+   |
+   v
+Protected Branch (main)
+   |
+   |-- Merge allowed ✅
+   |
+   v
+Deploy / Release
+
+
+🎯 Recommended Production Setup (main branch)
+
+✔ Require pull request
+✔ Require 2 approvals
+✔ Dismiss stale approvals
+✔ Require code owner review
+✔ Require approval of latest commit
+✔ Restrict who can dismiss reviews
+❌ Avoid PR bypass unless absolutely necessary
