@@ -25,3 +25,60 @@
         ✔ Easy collaboration and discussion
         ✔ History and audit trail
         ✔ Integrates with PRs, commits, and projects
+
+🧩 Key Components of a GitHub Issue
+    🏷️ 1. Labels - Common labels:
+            bug/feature/enhancement/documentation/good first issue/help wanted/priority:high
+            📌 Example: bug, priority:high
+
+    👤 2. Assignees - Assign the issue to:
+            A developer/A team
+            This shows who is responsible
+
+    🎯 3. Milestones - Group issues by goal or release.
+            Examples: v1.0 Release/Sprint-12/Q4 Enhancements
+
+    🔗 4. Issue Linking
+            Issues can be linked to:
+            - Pull Requests
+            - Other issues
+
+    💬 5. Comments & Discussion
+            Issues act as a discussion thread:
+            - Ask clarifying questions
+            - Share logs or screenshots
+            - Track decisions
+
+    🔄 6. Issue States
+            | State  | Meaning                    |
+            | ------ | -------------------------- |
+            | Open   | Work not completed         |
+            | Closed | Issue resolved or canceled |
+
+🔀 Issues vs Pull Requests
+| Feature          | Issue  | Pull Request |
+| ---------------- | ------ | ------------ |
+| Track work       | ✅     | ❌          |
+| Discuss ideas    | ✅     | ⚠️          |
+| Code changes     | ❌     | ✅          |
+| Review code      | ❌     | ✅          |
+| Auto close issue | ❌     | ✅          |
+
+
+👉 Issues describe what needs to be done
+👉 PRs show how it was done
+
+
+🛠️ Common Issue Types (Real-world)
+    🐛 Bug Issue
+            Title: Login fails on invalid token
+            Labels: bug, priority:high
+            Assignee: backend-team
+
+    ✨ Feature Request
+            Title: Add OAuth login
+            Labels: enhancement
+
+    📄 Documentation Issue
+            Title: Update README installation steps
+            Labels: documentation
