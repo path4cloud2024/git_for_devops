@@ -5,13 +5,13 @@ Git Pull Request:
 
     It is a simple proposal for any changes.
 
-    With PR, collaborators easily contributes to public repos with Forking. (Forking is a feature with any github user can create a replica of any public repo inside his account and develope a new feature or contribute a new addition then he can raise a PR reqeust to an original repo and ask owner to review those changes and if required, we have one or more approver to review and merge those new changes)
+    With PR, collaborators easily contributes to public repos with Forking. (Forking is a feature, with any github user can create a replica of any public repo inside his account and develope a new feature or contribute a new addition then he can raise a PR reqeust to an original repo and ask owner to review those changes and if required, we have one or more approver to review and merge those new changes)
 
 Step-by-Step Procecss:
-    - Lets assume we have lead-developer and developer where developer is working on some feature branch which he created on his local repo.
+    - Lets assume we have lead-developer and developer, two member where developer is working on some feature branch which he created on his local repo.
     - Developer has done some changes in his local feature branch and committed those to his local repo and then to remote branch.
     - Now, developer opened a PR as collaborator for review his changes and lead-developer is the reviewer here and he will approve the changes (PR)
-    - Once, PR is approved then developer can merger those changes to main branch and delete the local and remote feature branch.
+    - Once, PR is approved then developer can merge those changes to main branch and delete the local and remote feature branch.
 
     ** Here, if as reviewer wants some more modification and then he can comment on those PR and same has been notified via email to developer and once both agree and happy with changes then it will be approved and merged.
 
@@ -76,11 +76,5 @@ Demo:
 			--> Select "Require Pull Request before merging" under Protect matching branches which will enable all commits made to feature or non-protected branch must be submitted via pull reqeust with the required number of approver/reviewer before they can be merged into main/master branch.
 			--> Choose, "Dismiss stale pull request approvals when new commits are pushed" if you want your PR approval will be dismissed if a new commit will be made post approval, if a new commit then it must be approved again.
 			--> If you have configured the Code Owner and want approval from them before merger then choose this option "Require review from Code Owners"
-			--> We have other options as well, Please check 11-Protection-Rules–Explained.txt for more and detailed information.
-			
-		* Branch Ruleset
 		
-		--> 
-	
-	
-    
+		--> We have other options as well, Please check 11-Protection-Rules–Explained.txt for more and detailed information.
