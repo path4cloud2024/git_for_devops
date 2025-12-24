@@ -1,0 +1,27 @@
+🐞 GitHub Issues – Explained
+    GitHub Issues are used to track work, problems, ideas, and discussions related to a repository from external people.
+    They act like a lightweight project management system built directly into GitHub.
+
+🧠 What are GitHub Issues?
+    A GitHub Issue is a ticket that can represent:
+        🐛 Bugs
+        ✨ Feature requests
+        📄 Documentation tasks
+        🛠️ Technical debt
+        💬 Discussions or questions
+
+    Each issue has:
+        Title
+        Description
+        Labels
+        Assignees
+        Milestones
+        Comments
+        Status (Open / Closed)
+
+🔍 Why use Issues?
+        ✔ Centralized tracking of work
+        ✔ Clear ownership and responsibility
+        ✔ Easy collaboration and discussion
+        ✔ History and audit trail
+        ✔ Integrates with PRs, commits, and projects
